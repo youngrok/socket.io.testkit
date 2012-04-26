@@ -9,19 +9,25 @@ var spawn = require('child_process').spawn;
 
 var concurrency = parseInt(process.argv[2]);
 var done = 0;
+var fail = 0;
 var begin = new Date().getTime();
 
 for (var i = 0; i < concurrency; i++) {
     var node = spawn('node', ['./runclient.js', process.argv[3]]);
     node.on('exit', function(code) {
-        if (code != 0)
+        if (code != 0) {
             console.log('exit code:' + code);
+            fail ++;
+        }
         done ++;
-        console.log('finished ' + done)
+//        console.log('finished ' + done)
         if (done == concurrency) {
             var elapsed = new Date().getTime() - begin;
-            var tps = concurrency * parseInt(process.argv[3]) * 3.0 / elapsed * 1000;
-            console.log(concurrency + ' concurrent connection, ' + process.argv[3] + ' tries, 3 messages, ' + elapsed + 'ms, ' + tps + ' messages/s')
+            var messages = parseInt(process.argv[3]) * 2 + 5;
+            var tps = concurrency * messages / elapsed * 1000;
+            console.log(concurrency + ' concurrent connection, ' + process.argv[3] + ' * 2 + 5 messages, ' + elapsed + 'ms, ' + tps + ' tps');
+            console.log(fail + " failed.");
+
         }
 
     });
