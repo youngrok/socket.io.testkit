@@ -1,0 +1,12 @@
+{ "name": "socket.io.testkit",
+    "description": "Socket IO test kit",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url":  "git://github.com/mixu/siobench.git" },
+    "dependencies": {
+        "socket.io" : ">=0.8.7",
+        "socket.io-client" : ">=0.8.7"
+    },
+    "private":true
+}
