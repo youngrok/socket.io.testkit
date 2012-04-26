@@ -24,4 +24,9 @@ The server should be prepared to execute test case above.
 	pip install -r requirements.txt
 	python gevent_server.py
 
-  
+## caution
+if you run this test in mac os x, you should change maxfiles config.
+
+	sudo sysctl -w kern.maxfiles=32768
+	ulimit -n 20000
+	
