@@ -6,7 +6,8 @@
         "url":  "git://github.com/mixu/siobench.git" },
     "dependencies": {
         "socket.io" : ">=0.8.7",
-        "socket.io-client" : ">=0.8.7"
+        "socket.io-client" : ">=0.8.7",
+        "fibers" : ">=0.6.3"
     },
     "private":true
 }
